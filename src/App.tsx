@@ -5,14 +5,17 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
 import { AddPostForm } from "./features/posts/AddPostForm";
 
 import PostList from "./features/posts/PostList";
+import SinglePostPage from "./features/posts/SinglePostPage";
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <Navbar></Navbar>
         <Routes>
           <Route
             path="/"
@@ -23,6 +26,9 @@ function App() {
               </div>
             }
           />
+          <Route path="/posts/:postId" element={
+            <SinglePostPage></SinglePostPage>
+          }></Route>
           <Route path="*" element={<div>This is nowhere</div>} />
         </Routes>
       </div>
