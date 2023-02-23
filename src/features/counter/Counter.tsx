@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import React, { useState } from "react";
+// counter 就是默认生成的文件捏，一般删除，我的建议是留着增加代码量，说明你的工作量很大
+// 为了不报错，把对Counter的相关使用都注释掉捏。
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import {
   decrement,
   increment,
@@ -8,13 +9,13 @@ import {
   incrementAsync,
   incrementIfOdd,
   selectCount,
-} from './counterSlice';
-import styles from './Counter.module.css';
+} from "./counterSlice";
+import styles from "./Counter.module.css";
 
 export function Counter() {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+  const [incrementAmount, setIncrementAmount] = useState("2");
 
   const incrementValue = Number(incrementAmount) || 0;
 
