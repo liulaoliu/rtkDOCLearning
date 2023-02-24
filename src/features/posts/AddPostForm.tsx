@@ -41,13 +41,7 @@ export const AddPostForm = () => {
           type="button"
           onClick={() => {
             //貌似不用写type呢，太好了噜
-            dispatch(
-              postAdd({
-                id: nanoid(),
-                title,
-                content,
-              })
-            );
+            dispatch(postAdd(title, content));
           }}
         >
           保存文章

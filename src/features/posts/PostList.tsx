@@ -13,6 +13,11 @@ const PostsList = () => {
       <Link to={`/posts/${post.id}`} className="button muted-button">
         View Post
       </Link>
+      {/* 这个div就是一个简单的分隔符捏! */}
+      <div> ____</div>
+      <Link to={`/editPost/${post.id}`} className="button">
+        Edit Post
+      </Link>
     </article>
   ));
 
