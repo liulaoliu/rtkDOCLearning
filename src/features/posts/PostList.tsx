@@ -1,4 +1,4 @@
-// "/features/posts/PostList"
+//这是注释，显示文件路径捏:/src/features/posts/PostList.tsx
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";

@@ -1,3 +1,4 @@
+//这是注释，显示文件路径捏:/src/index.tsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';

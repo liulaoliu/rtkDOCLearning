@@ -1,3 +1,4 @@
+//这是注释，显示文件路径捏:/src/features/counter/counterSlice.ts
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from "../../app/store";
 import { fetchCount } from "./counterAPI";

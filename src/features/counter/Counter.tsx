@@ -1,3 +1,4 @@
+//这是注释，显示文件路径捏:/src/features/counter/Counter.tsx
 import React, { useState } from "react";
 // counter 就是默认生成的文件捏，一般删除，我的建议是留着增加代码量，说明你的工作量很大
 // 为了不报错，把对Counter的相关使用都注释掉捏。

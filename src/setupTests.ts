@@ -1,3 +1,4 @@
+//这是注释，显示文件路径捏:/src/setupTests.ts
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)

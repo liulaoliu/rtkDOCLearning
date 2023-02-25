@@ -1,3 +1,4 @@
+//这是注释，显示文件路径捏:/src/features/posts/postsSlice.ts
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = [

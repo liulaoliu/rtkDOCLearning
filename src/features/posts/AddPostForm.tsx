@@ -1,3 +1,4 @@
+//这是注释，显示文件路径捏:/src/features/posts/AddPostForm.tsx
 //features/posts/AddPostForm.tsx
 import React, { useState } from "react";
 //这是一个 用于添加文章标题和文章内容的表单呢！

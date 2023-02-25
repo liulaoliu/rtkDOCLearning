@@ -1,3 +1,4 @@
+//这是注释，显示文件路径捏:/src/App.test.tsx
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
