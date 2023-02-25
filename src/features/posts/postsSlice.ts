@@ -2,13 +2,15 @@
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = [
-  { id: "1", title: "First Post!", content: "Hello!" },
-  { id: "2", title: "Second Post", content: "More text" },
+  { id: "1", title: "First Post!", content: "Hello!", user: "0" },
+  { id: "2", title: "Second Post", content: "More text", user: "1" },
 ];
 type postAction = {
   id: string;
   content: string;
   title: string;
+  //类型见usersSlice里边的内容捏
+  user: string;
 };
 // 这里直接复制文档内容捏
 //天了噜，我没复制捏，稍后我会补充的，哭哭
@@ -23,12 +25,13 @@ const postsSlice = createSlice({
       reducer: (state, action: PayloadAction<postAction>) => {
         state.push(action.payload);
       },
-      prepare: (title, content) => {
+      prepare: (title, content, userId) => {
         return {
           payload: {
             id: nanoid(),
             title,
             content,
+            user: userId,
           },
         };
       },

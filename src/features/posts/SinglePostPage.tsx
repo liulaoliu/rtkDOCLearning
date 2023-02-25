@@ -3,6 +3,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import { useAppSelector } from "../../app/hooks";
+import { PostAuthor } from "./PostAuthor";
 
 const SinglePostPage = ({}) => {
   // The useParams hook returns an object of key/value pairs of the dynamic params from
@@ -28,6 +29,7 @@ const SinglePostPage = ({}) => {
         <h2>{post.title}</h2>
         <p className="post-content">{post.content}</p>
       </article>
+      <PostAuthor userId={post.user} />
     </section>
   );
 };

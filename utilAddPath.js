@@ -1,7 +1,6 @@
 const Path = require("path");
 const FS = require("fs");
 
-
 function ThroughDirectory(Directory) {
   FS.readdirSync(Directory).forEach((File) => {
     const Absolute = Path.join(Directory, File);
@@ -14,6 +13,10 @@ function ThroughDirectory(Directory) {
       //   });
 
       var data = FS.readFileSync(Absolute); //read existing contents into data
+
+      if (data.includes("//这是注释，显示文件路径捏")) {
+        return;
+      }
       var fd = FS.openSync(Absolute, "w+");
       var buffer = Buffer.from(
         "//这是注释，显示文件路径捏:/" +
@@ -30,4 +33,3 @@ function ThroughDirectory(Directory) {
 }
 
 ThroughDirectory(Path.resolve(__dirname, "src"));
-
