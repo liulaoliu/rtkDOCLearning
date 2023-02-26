@@ -1,19 +1,52 @@
 //这是注释，显示文件路径捏:/src/features/posts/postsSlice.ts
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
-
+import { sub } from "date-fns";
 const initialState = [
-  { id: "1", title: "First Post!", content: "Hello!", user: "0" },
-  { id: "2", title: "Second Post", content: "More text", user: "1" },
+  {
+    id: "1",
+    title: "First Post!",
+    content: "Hello!",
+    user: "0",
+    //意思就是这篇文章的创建时间是渲染时间10分钟之前（强制写的，为了示范)
+    date: sub(new Date(), { minutes: 10 }).toISOString(),
+    reactions: {
+      thumbsUp: 0,
+      hooray: 0,
+      heart: 0,
+      rocket: 0,
+      eyes: 0,
+    },
+  },
+  {
+    id: "2",
+    title: "Second Post",
+    content: "More text",
+    user: "1",
+    date: sub(new Date(), { minutes: 5 }).toISOString(),
+    reactions: {
+      thumbsUp: 0,
+      hooray: 0,
+      heart: 0,
+      rocket: 0,
+      eyes: 0,
+    },
+  },
+  //注意这里新增了date
 ];
-type postAction = {
+export type Treactions = typeof initialState[number]["reactions"];
+export type IPost = {
   id: string;
   content: string;
   title: string;
   //类型见usersSlice里边的内容捏
   user: string;
+  //注意这里也新增了date，我试验了一下，他对ui中dispatch action没任何影响，
+  //但它可以直接约束reducer的prepare中payload的构建
+  //我想了一下，prepare的形参就是dispatch action时候，actionCreator的形参
+  // 但是prepare内部预构建了id/date，所以这样看逻辑也很通，但是具体Typescript怎么做的，我实在不知道。
+  date: string;
+  reactions: Treactions;
 };
-// 这里直接复制文档内容捏
-//天了噜，我没复制捏，稍后我会补充的，哭哭
 
 const postsSlice = createSlice({
   name: "posts",
@@ -22,16 +55,24 @@ const postsSlice = createSlice({
   //同步的数据处理就全在这里呢！
   reducers: {
     postAdd: {
-      reducer: (state, action: PayloadAction<postAction>) => {
+      reducer: (state, action: PayloadAction<IPost>) => {
         state.push(action.payload);
       },
       prepare: (title, content, userId) => {
         return {
           payload: {
             id: nanoid(),
+            date: new Date().toISOString(),
             title,
             content,
             user: userId,
+            reactions: {
+              thumbsUp: 0,
+              hooray: 0,
+              heart: 0,
+              rocket: 0,
+              eyes: 0,
+            },
           },
         };
       },
@@ -47,13 +88,24 @@ const postsSlice = createSlice({
         console.log("花Q,你在干啥？");
       }
     },
+
+    reactionAdded(state, action) {
+      const { postId, reaction } = action.payload;
+      const existingPost = state.find((post) => post.id === postId);
+      if (existingPost) {
+        // https://stackoverflow.com/questions/57086672/element-implicitly-has-an-any-type-because-expression-of-type-string-cant-b
+         existingPost.reactions[reaction as keyof Treactions]++;
+      }
+    },
     //end
+
+    //如果你想给UI加上交互式的 排序。。。就得这么做，但是文档没介绍，我们先注释掉。。
+    // postSort: (state) => {
+    //   state.sort((a, b) => b.date.localeCompare(a.date));
+    // },
   },
 });
 
-//好辣，现在 slice完毕了
-//我们要去store里引入reducer呢
-//不要忘记把createSlice自动生成的action导出呢！
-export const { postAdd, postUpdated } = postsSlice.actions;
+export const { postAdd, postUpdated, reactionAdded } = postsSlice.actions;
 
 export default postsSlice.reducer;

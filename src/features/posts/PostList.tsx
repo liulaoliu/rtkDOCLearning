@@ -3,11 +3,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
 import { PostAuthor } from "./PostAuthor";
+import { ReactionButtons } from "./ReactionButtons";
+import TimeAgo from "./TimeAgo";
 
 const PostsList = () => {
   const posts = useAppSelector((state) => state.posts);
+  // 根据日期时间对文章进行倒序排序
+  const orderedPosts = posts
+    .slice()
+    .sort((a, b) => b.date.localeCompare(a.date));
 
-  const renderedPosts = posts.map((post) => (
+  const renderedPosts = orderedPosts.map((post) => (
     <article className="post-excerpt" key={post.id}>
       <h3>{post.title}</h3>
       <p className="post-content">{post.content.substring(0, 100)}</p>
@@ -20,6 +26,9 @@ const PostsList = () => {
       <Link to={`/editPost/${post.id}`} className="button">
         Edit Post
       </Link>
+
+      <TimeAgo timestamp={post.date}></TimeAgo>
+      <ReactionButtons post={post}></ReactionButtons>
     </article>
   ));
 
@@ -30,5 +39,4 @@ const PostsList = () => {
     </section>
   );
 };
-//好嘞
 export default PostsList;
