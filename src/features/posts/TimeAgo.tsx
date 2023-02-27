@@ -1,3 +1,4 @@
+//这是注释，显示文件路径捏:/src/features/posts/TimeAgo.tsx
 import React from "react";
 import { parseISO, formatDistanceToNow } from "date-fns";
 interface Prop {

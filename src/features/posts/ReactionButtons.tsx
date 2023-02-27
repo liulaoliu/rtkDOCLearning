@@ -1,3 +1,4 @@
+//这是注释，显示文件路径捏:/src/features/posts/ReactionButtons.tsx
 import React from "react";
 import { useAppDispatch } from "../../app/hooks";
 import { IPost, reactionAdded, Treactions } from "./postsSlice";
