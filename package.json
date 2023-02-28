@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mswjs/data": "^0.11.2",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.1",
@@ -12,12 +13,17 @@
     "@types/react": "^18.0.6",
     "@types/react-dom": "^18.0.2",
     "date-fns": "^2.29.3",
+    "faker": "^6.6.6",
+    "mock-socket": "^9.2.1",
+    "msw": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.1",
     "react-router": "^6.8.1",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "seedrandom": "^3.0.5",
+    "txtgen": "^2.2.4",
     "typescript": "^4.6.0",
     "web-vitals": "^2.1.0"
   },
@@ -46,7 +52,9 @@
     ]
   },
   "devDependencies": {
+    "@types/faker": "^6.6.9",
     "@types/react-router": "^5.1.20",
-    "@types/react-router-dom": "^5.3.3"
+    "@types/react-router-dom": "^5.3.3",
+    "@types/seedrandom": "^3.0.5"
   }
 }
