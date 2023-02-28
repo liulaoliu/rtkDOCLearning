@@ -1,46 +1,22 @@
-# Getting Started with Create React App
+#### 我正在学习 Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+我想 react 中，集中式的管理较多、较复杂的数据，Redux 是坠吼的选择，然而我不会用捏。
+[所以我找到了这个网址](https://cn.redux.js.org/)
 
-## Available Scripts
+文档上的东西真的好多吖，我只能慢慢看，慢慢学习捏。
 
-In the project directory, you can run:
+友情提示：
+本应用使用 Typescript 编写。
 
-### `yarn start`
+对应的博客文章在：
+[我的博客地址](https://www.cnblogs.com/nulixuexipython/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+具体内容按照章节划分:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[https://www.cnblogs.com/nulixuexipython/p/17097257.html](Redxu(RTK) 基础 第 1 节 概述和概念吖)
+[https://www.cnblogs.com/nulixuexipython/p/17098231.html](Redxu(RTK) 基础 第 2 节 应用的结构)
+[https://www.cnblogs.com/nulixuexipython/p/17136145.html]()
+[https://www.cnblogs.com/nulixuexipython/p/17136145.html](Redxu(RTK) 基础 对 thunk 的补充(createAsyncThunk 和 extraReducers))
+[https://www.cnblogs.com/nulixuexipython/p/17138967.html](Redxu(RTK) 基础 第 3 节 创建一个 Post)
+[https://www.cnblogs.com/nulixuexipython/p/17142337.html](Redxu(RTK) 基础 第 3.1 节 创建一个 Post part2 文章列表和添加新文章)
+[https://www.cnblogs.com/nulixuexipython/p/17146865.html](Redxu(RTK) 基础 第 4 节 显示和编辑单个文章 添加用户 存储文章日期 增加排序和交互功能 )
