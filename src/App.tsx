@@ -17,7 +17,7 @@ import SinglePostPage from "./features/posts/SinglePostPage";
 function App() {
   return (
     <Router>
-      {/* <Counter></Counter> */}
+      <Counter></Counter>
       <div className="App">
         <Navbar></Navbar>
         <Routes>
