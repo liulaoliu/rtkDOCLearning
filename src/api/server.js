@@ -7,7 +7,12 @@ import { Server as MockSocketServer } from "mock-socket";
 import { setRandom } from "txtgen";
 
 import { parseISO } from "date-fns";
+<<<<<<< HEAD
 
+=======
+// npm i msw mock-socket  seedrandom txtgen faker @mswjs/data -S
+// npm i  @types/faker @types/seedrandom -D
+>>>>>>> 879fa17da69e530e3002a7f068a0169a062879ac
 const NUM_USERS = 3;
 const POSTS_PER_USER = 3;
 const RECENT_NOTIFICATIONS_DAYS = 7;
@@ -21,6 +26,13 @@ const ARTIFICIAL_DELAY_MS = 2000;
 // a consistent set of users / entries each time the page loads.
 // This can be reset by deleting this localStorage value,
 // or turned off by setting `useSeededRNG` to false.
+<<<<<<< HEAD
+=======
+// 此外，模拟服务器已设置为在每次加载页面时重复使用相同的随机种子，
+// 以便生成相同的假用户和假帖子列表。如果你想重置它，
+// 请删除浏览器 Local Storage 中的 randomTimestampSeed 值并重新加载页面，
+// 或者你可以通过编辑 src/api/server.js 并将 useSeededRNG 设置为 false 来关闭它.
+>>>>>>> 879fa17da69e530e3002a7f068a0169a062879ac
 let useSeededRNG = true;
 
 let rng = seedrandom();
@@ -38,6 +50,10 @@ if (useSeededRNG) {
   }
 
   rng = seedrandom(randomSeedString);
+<<<<<<< HEAD
+=======
+  // ?
+>>>>>>> 879fa17da69e530e3002a7f068a0169a062879ac
   setRandom(rng);
   faker.seed(seedDate.getTime());
 }

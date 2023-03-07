@@ -1561,9 +1561,15 @@
     "msw" "latest"
 
 "@mswjs/interceptors@^0.17.5":
+<<<<<<< HEAD
   "integrity" "sha512-4LVGt03RobMH/7ZrbHqRxQrS9cc2uh+iNKSj8UWr8M26A2i793ju+csaB5zaqYltqJmA2jUq4VeYfKmVqvsXQg=="
   "resolved" "https://registry.npmmirror.com/@mswjs/interceptors/-/interceptors-0.17.9.tgz"
   "version" "0.17.9"
+=======
+  "integrity" "sha512-hjS5dy8u+Baa5r/SVAQyWZYQr8YZzpeGldNXJlZQBPjt7FQL7Acd1BnXJWmIhl62s5uh0WJNAcUMfAAcnqTchA=="
+  "resolved" "https://registry.npmmirror.com/@mswjs/interceptors/-/interceptors-0.17.8.tgz"
+  "version" "0.17.8"
+>>>>>>> 879fa17da69e530e3002a7f068a0169a062879ac
   dependencies:
     "@open-draft/until" "^1.0.3"
     "@types/debug" "^4.1.7"
@@ -1997,6 +2003,13 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
+"@types/faker@^6.6.9":
+  "integrity" "sha512-Y9YYm5L//8ooiiknO++4Gr539zzdI0j3aXnOBjo1Vk+kTvffY10GuE2wn78AFPECwZ5MYGTjiDVw1naLLdDimw=="
+  "resolved" "https://registry.npmmirror.com/@types/faker/-/faker-6.6.9.tgz"
+  "version" "6.6.9"
+  dependencies:
+    "faker" "*"
+
 "@types/graceful-fs@^4.1.2":
   "integrity" "sha512-Sig0SNORX9fdW+bQuTEovKj3uHcUL6LQKbCrrqb1X7J6/ReAbhCXRAhc+SMejhLELFj2QcyuxmUooZ4bt5ReSw=="
   "resolved" "https://registry.npmmirror.com/@types/graceful-fs/-/graceful-fs-4.1.6.tgz"
@@ -2188,6 +2201,11 @@
   "integrity" "sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew=="
   "resolved" "https://registry.npmmirror.com/@types/scheduler/-/scheduler-0.16.2.tgz"
   "version" "0.16.2"
+
+"@types/seedrandom@^3.0.5":
+  "integrity" "sha512-kopEpYpFQvQdYsZkZVwht/0THHmTFFYXDaqV/lM45eweJ8kcGVDgZHs0RVTolSq55UPZNmjhKc9r7UvLu/mQQg=="
+  "resolved" "https://registry.npmmirror.com/@types/seedrandom/-/seedrandom-3.0.5.tgz"
+  "version" "3.0.5"
 
 "@types/semver@^7.3.12":
   "integrity" "sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw=="
@@ -4623,7 +4641,11 @@
     "iconv-lite" "^0.4.24"
     "tmp" "^0.0.33"
 
+<<<<<<< HEAD
 "faker@^6.6.6":
+=======
+"faker@*", "faker@^6.6.6":
+>>>>>>> 879fa17da69e530e3002a7f068a0169a062879ac
   "integrity" "sha512-wLTv2a28wjUyWkbnX7u/ABZBkUkIF2fCd73V6P2oFqEGEktDfzWx4UxrSqtPRw0xPRAcjeAOIiJWqZm3pP4u3g=="
   "resolved" "https://registry.npmmirror.com/faker/-/faker-5.5.3.tgz"
   "version" "6.6.6"
@@ -5023,7 +5045,16 @@
   "resolved" "https://registry.npmmirror.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz"
   "version" "1.0.4"
 
+<<<<<<< HEAD
 "graphql@^15.0.0 || ^16.0.0", "graphql@^15.5.0":
+=======
+"graphql@^15.0.0 || ^16.0.0":
+  "integrity" "sha512-KPIBPDlW7NxrbT/eh4qPXz5FiFdL5UbaA0XUNz2Rp3Z3hqBSkbj0GVjwFDztsWVauZUWsbKHgMg++sk8UX0bkw=="
+  "resolved" "https://registry.npmmirror.com/graphql/-/graphql-16.6.0.tgz"
+  "version" "16.6.0"
+
+"graphql@^15.5.0":
+>>>>>>> 879fa17da69e530e3002a7f068a0169a062879ac
   "integrity" "sha512-5gghUc24tP9HRznNpV2+FIoq3xKkj5dTQqf4v0CpdPbFVwFkWoxOM+o+2OC9ZSvjEMTjfmG9QT+gcvggTwW1zw=="
   "resolved" "https://registry.npmmirror.com/graphql/-/graphql-15.8.0.tgz"
   "version" "15.8.0"
@@ -8743,7 +8774,18 @@
   dependencies:
     "internal-slot" "^1.0.4"
 
+<<<<<<< HEAD
 "strict-event-emitter@^0.2.0", "strict-event-emitter@^0.2.4":
+=======
+"strict-event-emitter@^0.2.0":
+  "integrity" "sha512-KDf/ujU8Zud3YaLtMCcTI4xkZlZVIYxTLr+XIULexP+77EEVWixeXroLUXQXiVtH4XH2W7jr/3PT1v3zBuvc3A=="
+  "resolved" "https://registry.npmmirror.com/strict-event-emitter/-/strict-event-emitter-0.2.8.tgz"
+  "version" "0.2.8"
+  dependencies:
+    "events" "^3.3.0"
+
+"strict-event-emitter@^0.2.4":
+>>>>>>> 879fa17da69e530e3002a7f068a0169a062879ac
   "integrity" "sha512-KDf/ujU8Zud3YaLtMCcTI4xkZlZVIYxTLr+XIULexP+77EEVWixeXroLUXQXiVtH4XH2W7jr/3PT1v3zBuvc3A=="
   "resolved" "https://registry.npmmirror.com/strict-event-emitter/-/strict-event-emitter-0.2.8.tgz"
   "version" "0.2.8"
@@ -9177,10 +9219,17 @@
   dependencies:
     "tslib" "^1.8.1"
 
+<<<<<<< HEAD
 "txtgen@^3.0.4":
   "integrity" "sha512-15UBmauZ4Ceq3UPEae9gaRo7g1c5AR6qyRRaF9TIXXMTEfCxo1h+fAsgl21Zqvad9gNhvEt0XTGKsTXy2PydeA=="
   "resolved" "https://registry.npmmirror.com/txtgen/-/txtgen-3.0.4.tgz"
   "version" "3.0.4"
+=======
+"txtgen@^2.2.4":
+  "integrity" "sha512-b3wteOTrO1RPV1f6dhYaNz2G48a6dCH+pvTBRMdtjTWSeVBBE4rFypoc+2uT0F7OFSgBlOQefDuDvp9VYqA73g=="
+  "resolved" "https://registry.npmmirror.com/txtgen/-/txtgen-2.2.8.tgz"
+  "version" "2.2.8"
+>>>>>>> 879fa17da69e530e3002a7f068a0169a062879ac
 
 "type-check@^0.4.0":
   "integrity" "sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew=="
