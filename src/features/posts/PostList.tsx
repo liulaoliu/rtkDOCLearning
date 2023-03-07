@@ -3,11 +3,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
 import { PostAuthor } from "./PostAuthor";
+import { selectAllPosts } from "./postsSlice";
 import { ReactionButtons } from "./ReactionButtons";
 import TimeAgo from "./TimeAgo";
 
 const PostsList = () => {
-  const posts = useAppSelector((state) => state.posts);
+  const posts = useAppSelector(selectAllPosts);
   // 根据日期时间对文章进行倒序排序
   const orderedPosts = posts
     .slice()

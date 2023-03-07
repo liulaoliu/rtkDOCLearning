@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
-import { postUpdated } from "./postsSlice";
+import { postUpdated, selectPostById } from "./postsSlice";
 //这个就是个无奈的绕过，理论上useAppSelector有可能返回undefined,
 //下面两行对undefined还挺敏感的。
 //const [title, setTitle] = useState(post.title);
@@ -35,7 +35,7 @@ export const EditPostForm = () => {
   const { postId } = useParams();
 
   let post = initializeUndefinedPostWhenErrorHappensHelper(
-    useAppSelector((state) => state.posts.find((post) => post.id === postId))
+    useAppSelector((state) => selectPostById(state,postId))
   );
 
   const [title, setTitle] = useState(post.title);

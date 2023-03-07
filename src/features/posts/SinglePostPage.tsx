@@ -4,6 +4,7 @@ import React from "react";
 import { useParams } from "react-router";
 import { useAppSelector } from "../../app/hooks";
 import { PostAuthor } from "./PostAuthor";
+import { selectPostById } from "./postsSlice";
 
 const SinglePostPage = ({}) => {
   // The useParams hook returns an object of key/value pairs of the dynamic params from
@@ -11,9 +12,7 @@ const SinglePostPage = ({}) => {
   // Child routes inherit all params from their parent routes.
   const { postId } = useParams();
 
-  const post = useAppSelector((state) =>
-    state.posts.find((post) => post.id === postId)
-  );
+  const post = useAppSelector((state) => selectPostById(state, postId));
 
   if (!post) {
     return (

@@ -1,7 +1,9 @@
+// 更新后的 postSlice
 //这是注释，显示文件路径捏:/src/features/posts/postsSlice.ts
+import { RootState } from "./../../app/store";
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import { sub } from "date-fns";
-const initialState = [
+const postsInitialState = [
   {
     id: "1",
     title: "First Post!",
@@ -31,9 +33,13 @@ const initialState = [
       eyes: 0,
     },
   },
-  //注意这里新增了date
 ];
-export type Treactions = typeof initialState[number]["reactions"];
+const initialState = {
+  posts: postsInitialState,
+  status: "idle",
+  error: null,
+};
+export type Treactions = typeof initialState["posts"][number]["reactions"];
 export type IPost = {
   id: string;
   content: string;
@@ -56,7 +62,7 @@ const postsSlice = createSlice({
   reducers: {
     postAdd: {
       reducer: (state, action: PayloadAction<IPost>) => {
-        state.push(action.payload);
+        state.posts.push(action.payload);
       },
       prepare: (title, content, userId) => {
         return {
@@ -79,7 +85,7 @@ const postsSlice = createSlice({
     },
     postUpdated: (state, action) => {
       const { id, title, content } = action.payload;
-      const existingPost = state.find((post) => post.id === id);
+      const existingPost = state.posts.find((post) => post.id === id);
       if (existingPost) {
         existingPost.title = title;
         existingPost.content = content;
@@ -91,7 +97,7 @@ const postsSlice = createSlice({
 
     reactionAdded(state, action) {
       const { postId, reaction } = action.payload;
-      const existingPost = state.find((post) => post.id === postId);
+      const existingPost = state.posts.find((post) => post.id === postId);
       if (existingPost) {
         // https://stackoverflow.com/questions/57086672/element-implicitly-has-an-any-type-because-expression-of-type-string-cant-b
         existingPost.reactions[reaction as keyof Treactions]++;
@@ -108,4 +114,8 @@ const postsSlice = createSlice({
 
 export const { postAdd, postUpdated, reactionAdded } = postsSlice.actions;
 
+export const selectAllPosts = (state: RootState) => state.posts.posts;
+
+export const selectPostById = (state: RootState, postId: string | undefined) =>
+  state.posts.posts.find((post) => post.id === postId);
 export default postsSlice.reducer;
