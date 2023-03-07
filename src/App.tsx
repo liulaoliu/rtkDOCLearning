@@ -7,6 +7,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
+import { Counter } from "./features/counter/Counter";
 import { AddPostForm } from "./features/posts/AddPostForm";
 import { EditPostForm } from "./features/posts/EdigPostForm";
 
@@ -16,6 +17,7 @@ import SinglePostPage from "./features/posts/SinglePostPage";
 function App() {
   return (
     <Router>
+      {/* <Counter></Counter> */}
       <div className="App">
         <Navbar></Navbar>
         <Routes>
