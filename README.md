@@ -25,3 +25,5 @@
 [Redxu(RTK) 基础 数据流基础 第 3.1 节 创建一个 Post part2 文章列表和添加新文章 ](https://www.cnblogs.com/nulixuexipython/p/17142337.html)
 
 [Redxu(RTK) 基础 使用数据 第 4 节 显示和编辑单个文章 添加用户 存储文章日期 增加排序和交互功能](https://www.cnblogs.com/nulixuexipython/p/17146865.html)
+
+[Redxu(RTK) 基础 异步逻辑与数据请求 第5.0节 简介 简单介绍示例项目提供的微型HTTP客户端和mock服务器](https://www.cnblogs.com/nulixuexipython/p/17171875.html)
