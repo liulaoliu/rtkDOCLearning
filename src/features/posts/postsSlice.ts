@@ -1,45 +1,31 @@
 //这是注释，显示文件路径捏:/src/features/posts/postsSlice.ts
 
 import { RootState } from "./../../app/store";
-import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  nanoid,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 import { sub } from "date-fns";
-const postsInitialState = [
-  {
-    id: "1",
-    title: "First Post!",
-    content: "Hello!",
-    user: "0",
-    //意思就是这篇文章的创建时间是渲染时间10分钟之前（强制写的，为了示范)
-    date: sub(new Date(), { minutes: 10 }).toISOString(),
-    reactions: {
-      thumbsUp: 0,
-      hooray: 0,
-      heart: 0,
-      rocket: 0,
-      eyes: 0,
-    },
-  },
-  {
-    id: "2",
-    title: "Second Post",
-    content: "More text",
-    user: "1",
-    date: sub(new Date(), { minutes: 5 }).toISOString(),
-    reactions: {
-      thumbsUp: 0,
-      hooray: 0,
-      heart: 0,
-      rocket: 0,
-      eyes: 0,
-    },
-  },
-];
-const initialState = {
-  posts: postsInitialState,
+import { client } from "../../api/client";
+interface IState {
+  posts: IPost[];
+  status: "idle" | "pending" | "success" | "failed";
+  error: null | any;
+}
+const initialState: IState = {
+  posts: [],
   status: "idle",
   error: null,
 };
-export type Treactions = typeof initialState["posts"][number]["reactions"];
+export type Treactions = {
+  thumbsUp: number;
+  hooray: number;
+  heart: number;
+  rocket: number;
+  eyes: number;
+};
 export type IPost = {
   id: string;
   content: string;
@@ -54,6 +40,10 @@ export type IPost = {
   reactions: Treactions;
 };
 
+export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
+  const response = await client.get("/fakeApi/posts");
+  return response.data;
+});
 const postsSlice = createSlice({
   name: "posts",
   initialState: initialState,
@@ -109,6 +99,21 @@ const postsSlice = createSlice({
     // postSort: (state) => {
     //   state.sort((a, b) => b.date.localeCompare(a.date));
     // },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchPosts.pending, (state, action) => {
+        state.status = "pending";
+      })
+      .addCase(fetchPosts.fulfilled, (state, action) => {
+        state.status = "success";
+        // Add any fetched posts to the array
+        state.posts = state.posts.concat(action.payload);
+      })
+      .addCase(fetchPosts.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
   },
 });
 

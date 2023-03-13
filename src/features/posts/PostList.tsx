@@ -1,44 +1,67 @@
 //这是注释，显示文件路径捏:/src/features/posts/PostList.tsx
 
-import React from "react";
-import { Link } from "react-router-dom";
-import { useAppSelector } from "../../app/hooks";
 import { PostAuthor } from "./PostAuthor";
-import { selectAllPosts } from "./postsSlice";
+import { TimeAgo } from "./TimeAgo";
 import { ReactionButtons } from "./ReactionButtons";
-import TimeAgo from "./TimeAgo";
+import { selectAllPosts, fetchPosts, IPost } from "./postsSlice";
+import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useEffect } from "react";
 
-const PostsList = () => {
-  const posts = useAppSelector(selectAllPosts);
-  // 根据日期时间对文章进行倒序排序
-  const orderedPosts = posts
-    .slice()
-    .sort((a, b) => b.date.localeCompare(a.date));
-
-  const renderedPosts = orderedPosts.map((post) => (
+const PostExcerpt = ({ post }: { post: IPost }) => {
+  return (
     <article className="post-excerpt" key={post.id}>
       <h3>{post.title}</h3>
+      <div>
+        <PostAuthor userId={post.user} />
+        <TimeAgo timestamp={post.date} />
+      </div>
       <p className="post-content">{post.content.substring(0, 100)}</p>
-      <PostAuthor userId={post.user} />
+
+      <ReactionButtons post={post} />
       <Link to={`/posts/${post.id}`} className="button muted-button">
         View Post
       </Link>
-      {/* 这个div就是一个简单的分隔符捏! */}
-      <div> ____</div>
-      <Link to={`/editPost/${post.id}`} className="button">
-        Edit Post
-      </Link>
-
-      <TimeAgo timestamp={post.date}></TimeAgo>
-      <ReactionButtons post={post}></ReactionButtons>
     </article>
-  ));
+  );
+};
+
+export const PostList = () => {
+  const dispatch = useAppDispatch();
+  const posts = useAppSelector(selectAllPosts);
+
+  const postStatus = useAppSelector((state) => state.posts.status);
+  const error = useAppSelector((state) => state.posts.error);
+
+  useEffect(() => {
+    if (postStatus === "idle") {
+      dispatch(fetchPosts());
+    }
+  }, [postStatus, dispatch]);
+
+  let content;
+
+  if (postStatus === "pending") {
+    content = <div>正在加载捏！</div>;
+  } else if (postStatus === "success") {
+    // Sort posts in reverse chronological order by datetime string
+    const orderedPosts = posts
+      .slice()
+      .sort((a, b) => b.date.localeCompare(a.date));
+
+    content = orderedPosts.map((post) => (
+      <PostExcerpt key={post.id} post={post} />
+    ));
+  } else if (postStatus === "failed") {
+    content = <div>{error}</div>;
+  }
 
   return (
     <section className="posts-list">
       <h2>Posts</h2>
-      {renderedPosts}
+      {content}
     </section>
   );
 };
-export default PostsList;
+
+export default PostList;
