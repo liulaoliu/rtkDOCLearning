@@ -1,5 +1,4 @@
 //这是注释，显示文件路径捏:/src/components/Navbar.tsx
-// "/src/components/Navbar"
 import React from "react";
 
 import { Link } from "react-router-dom";

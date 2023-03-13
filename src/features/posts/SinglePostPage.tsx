@@ -1,5 +1,4 @@
 //这是注释，显示文件路径捏:/src/features/posts/SinglePostPage.tsx
-//"/features/posts/SinglePostPage"
 import React from "react";
 import { useParams } from "react-router";
 import { useAppSelector } from "../../app/hooks";

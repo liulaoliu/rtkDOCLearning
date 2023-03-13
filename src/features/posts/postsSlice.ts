@@ -1,5 +1,5 @@
-// 更新后的 postSlice
 //这是注释，显示文件路径捏:/src/features/posts/postsSlice.ts
+
 import { RootState } from "./../../app/store";
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import { sub } from "date-fns";

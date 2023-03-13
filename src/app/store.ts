@@ -1,5 +1,5 @@
-import { incrementAsync } from "./../features/counter/counterSlice";
 //这是注释，显示文件路径捏:/src/app/store.ts
+import { incrementAsync } from "./../features/counter/counterSlice";
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { increment } from "../features/counter/counterSlice";
 import postsReducer from "../features/posts/postsSlice";

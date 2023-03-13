@@ -1,5 +1,5 @@
 //这是注释，显示文件路径捏:/src/features/posts/EdigPostForm.tsx
-// features/posts/EditPostForm.tsx
+
 import React, { useState } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";

@@ -1,3 +1,4 @@
+//这是注释，显示文件路径捏:/src/api/server.js
 import { rest, setupWorker } from "msw";
 import { factory, oneOf, manyOf, primaryKey } from "@mswjs/data";
 import { nanoid } from "@reduxjs/toolkit";
