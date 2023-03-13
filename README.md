@@ -27,3 +27,9 @@
 [Redxu(RTK) 基础 使用数据 第 4 节 显示和编辑单个文章 添加用户 存储文章日期 增加排序和交互功能](https://www.cnblogs.com/nulixuexipython/p/17146865.html)
 
 [Redxu(RTK) 基础 异步逻辑与数据请求 第5.0节 简介 简单介绍示例项目提供的微型HTTP客户端和mock服务器](https://www.cnblogs.com/nulixuexipython/p/17171875.html)
+
+[Redxu(RTK) 基础 异步逻辑与数据请求 第5.1节 Thunks 与异步逻辑](https://www.cnblogs.com/nulixuexipython/p/17165913.html)
+
+[Redxu(RTK) 基础 异步逻辑与数据请求 第5.2 节 加载帖子加载帖子](https://www.cnblogs.com/nulixuexipython/p/17165911.html)
+
+[Redxu(RTK) 基础 异步逻辑与数据请求 第5.2.1节 加载帖子第二部分 使用 createAsyncThunk 请求数据( thunk 和extraReducers) ](https://www.cnblogs.com/nulixuexipython/p/17188173.html)
