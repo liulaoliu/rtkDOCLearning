@@ -19,15 +19,20 @@ function ThroughDirectory(Directory) {
       }
       var fd = FS.openSync(Absolute, "w+");
       var buffer = Buffer.from(
-        "//这是注释，显示文件路径捏:/" +
+        "/*这是注释，显示文件路径捏:/" +
           Absolute.replace("d:\\waoh\\my-app\\", "").replaceAll("\\", "/") +
-          "\n"
+          "\n" +
+          "*/"
       );
-
-      FS.writeSync(fd, buffer, 0, buffer.length, 0); //write new data
-      FS.writeSync(fd, data, 0, data.length, buffer.length); //append old data
-      // or FS.appendFile(fd, data);
-      FS.close(fd);
+      const shouldAddCommentFileType = ["tsx", "ts", "js", "jsx", "css"];
+      const len =Absolute.split(".").length
+      const fileType = Absolute.split(".")[len]
+      if (shouldAddCommentFileType.includes(fileType)) {
+        FS.writeSync(fd, buffer, 0, buffer.length, 0); //write new data
+        FS.writeSync(fd, data, 0, data.length, buffer.length); //append old data
+        // or FS.appendFile(fd, data);
+        FS.close(fd);
+      }
     }
   });
 }
