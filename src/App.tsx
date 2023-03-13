@@ -6,6 +6,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import { useAppDispatch } from "./app/hooks";
 import { Navbar } from "./components/Navbar";
 import { Counter } from "./features/counter/Counter";
 import { AddPostForm } from "./features/posts/AddPostForm";
@@ -13,8 +14,11 @@ import { EditPostForm } from "./features/posts/EdigPostForm";
 
 import PostList from "./features/posts/PostList";
 import SinglePostPage from "./features/posts/SinglePostPage";
+import { fetchUsers } from "./features/users/usersSlice";
 
 function App() {
+  const dispatch = useAppDispatch();
+  dispatch(fetchUsers());
   return (
     <Router>
       <Counter></Counter>

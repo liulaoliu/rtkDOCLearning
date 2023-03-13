@@ -3,15 +3,14 @@
 import React, { useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { postAdd } from "./postsSlice";
+import { addNewPost, postAdd } from "./postsSlice";
 export const AddPostForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  //不要忘记用类型修饰过的useAppDispatch呢！
   const dispatch = useAppDispatch();
-  //新增的用于存储 select中选择的的userId （是从state.users里边选的)
   const [userId, setUserId] = useState("");
-  // 具体userId， 对吧，是从state.users里边拿的，（用<select>显示
+  const [addRequestStatus, setAddRequestStatus] = useState("idle");
+
   const users = useAppSelector((state) => state.users);
 
   const onTitleChanged = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -20,10 +19,26 @@ export const AddPostForm = () => {
     setContent(e.target.value);
   const onAuthorChanged = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setUserId(e.target.value);
-  //强制要求，必须填写文章标题、内容和用户的id才能 存储这条post
-  const canSave = Boolean(title) && Boolean(content) && Boolean(userId);
-  //这是个 option 组件啊，造出来一个下拉菜单的效果
-  const usersOptions = users.map((user) => (
+  const canSave =
+    [title, content, userId].every(Boolean) && addRequestStatus === "idle";
+
+  const onSavePostClicked = async () => {
+    if (canSave) {
+      try {
+        setAddRequestStatus("pending");
+        await dispatch(addNewPost({ title, content, user: userId })).unwrap();
+        setTitle("");
+        setContent("");
+        setUserId("");
+      } catch (err) {
+        console.error("Failed to save the post: ", err);
+      } finally {
+        setAddRequestStatus("idle");
+      }
+    }
+  };
+  // 这是个 option 组件啊，造出来一个下拉菜单的效果
+  const usersOptions = users.users.map((user) => (
     <option key={user.id} value={user.id}>
       {user.name}
     </option>
@@ -53,13 +68,7 @@ export const AddPostForm = () => {
           onChange={onContentChanged}
         />
 
-        <button
-          type="button"
-          onClick={() => {
-            dispatch(postAdd(title, content, userId));
-          }}
-          disabled={!canSave}
-        >
+        <button type="button" onClick={onSavePostClicked} disabled={!canSave}>
           保存文章
         </button>
       </form>

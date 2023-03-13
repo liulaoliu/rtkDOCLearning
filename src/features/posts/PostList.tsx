@@ -50,7 +50,7 @@ export const PostList = () => {
       .sort((a, b) => b.date.localeCompare(a.date));
 
     content = orderedPosts.map((post) => (
-      <PostExcerpt key={post.id} post={post} />
+      <PostExcerpt key={post.id+Math.random().toString()} post={post} />
     ));
   } else if (postStatus === "failed") {
     content = <div>{error}</div>;

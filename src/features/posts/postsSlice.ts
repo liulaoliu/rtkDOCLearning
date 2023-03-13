@@ -7,7 +7,6 @@ import {
   nanoid,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { sub } from "date-fns";
 import { client } from "../../api/client";
 interface IState {
   posts: IPost[];
@@ -44,6 +43,17 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   const response = await client.get("/fakeApi/posts");
   return response.data;
 });
+export const addNewPost = createAsyncThunk(
+  "posts/addNewPost",
+  // payload 创建者接收部分“{title, content, user}”对象
+  async (initialPost: Pick<IPost, "title" | "user" | "content">) => {
+    // 我们发送初始数据到 API server
+    const response = await client.post("/fakeApi/posts", initialPost);
+    // 响应包括完整的帖子对象，包括唯一 ID
+    return response.data;
+  }
+);
+
 const postsSlice = createSlice({
   name: "posts",
   initialState: initialState,
@@ -113,6 +123,9 @@ const postsSlice = createSlice({
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(addNewPost.fulfilled, (state, action) => {
+        state.posts = state.posts.concat(action.payload);
       });
   },
 });
