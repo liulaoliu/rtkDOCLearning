@@ -14,6 +14,8 @@ import { EditPostForm } from "./features/posts/EdigPostForm";
 
 import PostList from "./features/posts/PostList";
 import SinglePostPage from "./features/posts/SinglePostPage";
+import { UsersList } from "./features/users/UserList";
+import { UserPage } from "./features/users/UserPage";
 import { fetchUsers } from "./features/users/usersSlice";
 
 function App() {
@@ -41,6 +43,14 @@ function App() {
           <Route
             path="/editPost/:postId"
             element={<EditPostForm></EditPostForm>}
+          ></Route>
+             <Route
+            path="/users"
+            element={<UsersList></UsersList>}
+          ></Route>
+            <Route
+            path="/users/:userId"
+            element={<UserPage></UserPage>}
           ></Route>
           <Route path="*" element={<div>This is nowhere</div>} />
         </Routes>

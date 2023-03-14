@@ -1,4 +1,5 @@
 //这是注释，显示文件路径捏:/src/features/users/usersSlice.ts
+import { RootState } from "./../../app/store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { client } from "../../api/client";
@@ -35,4 +36,9 @@ const usersSlice = createSlice({
   },
 });
 
+export const selectAllUsers = (state: RootState) => {
+  return state.users.users
+};
+export const selectUserById = (state: RootState, userId:string|undefined) =>
+  state.users.users.find(user => user.id === userId)
 export default usersSlice.reducer;

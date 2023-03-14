@@ -36,3 +36,5 @@
 [Redxu(RTK) 基础 异步逻辑与数据请求 第 5.2.1 节 加载帖子第二部分 使用 createAsyncThunk 请求数据( thunk 和 extraReducers) ](https://www.cnblogs.com/nulixuexipython/p/17188173.html)
 
 [Redxu(RTK) 基础 异步逻辑与数据请求 第 5.3 节 加载用户数据](https://www.cnblogs.com/nulixuexipython/p/17211634.html)
+
+[Redxu(RTK) 基础 性能与数据范式化 6.1 添加用户页面](https://www.cnblogs.com/nulixuexipython/p/17215128.html)
