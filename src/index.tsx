@@ -6,13 +6,11 @@ import { store } from "./app/store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { worker } from "./api/server";
-// import "./indexcopy.css";
+import "./index.css";
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 
 worker.start({ onUnhandledRequest: "bypass" });
-
-
 
 root.render(
   <React.StrictMode>
