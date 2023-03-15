@@ -5,11 +5,13 @@ import { increment } from "../features/counter/counterSlice";
 import postsReducer from "../features/posts/postsSlice";
 import usersReducer from "../features/users/usersSlice";
 import counterReducer from "../features/counter/counterSlice";
+import notificationReducer from "../features/notifications/notificationSlice";
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     posts: postsReducer,
     users: usersReducer,
+    notifications: notificationReducer,
   },
 });
 
