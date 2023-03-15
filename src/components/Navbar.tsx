@@ -2,8 +2,15 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../app/hooks";
+import { fetchNotifications } from "../features/notifications/notificationSlice";
 
 export const Navbar = () => {
+  const dispatch = useAppDispatch();
+
+  const fetchNewNotifications = () => {
+    dispatch(fetchNotifications());
+  };
   return (
     <nav>
       <section>
@@ -13,7 +20,11 @@ export const Navbar = () => {
           <div className="navLinks">
             <Link to="/">文章列表</Link>
             <Link to="/users">用户列表</Link>
+            <Link to="/notifications">动态</Link>
           </div>
+          <button className="button" onClick={fetchNewNotifications}>
+            刷了个新 动态
+          </button>
         </div>
       </section>
     </nav>

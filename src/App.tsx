@@ -9,6 +9,7 @@ import {
 import { useAppDispatch } from "./app/hooks";
 import { Navbar } from "./components/Navbar";
 import { Counter } from "./features/counter/Counter";
+import { NotificationsList } from "./features/notifications/NotificationList";
 import { AddPostForm } from "./features/posts/AddPostForm";
 import { EditPostForm } from "./features/posts/EdigPostForm";
 
@@ -44,13 +45,11 @@ function App() {
             path="/editPost/:postId"
             element={<EditPostForm></EditPostForm>}
           ></Route>
-             <Route
-            path="/users"
-            element={<UsersList></UsersList>}
-          ></Route>
-            <Route
-            path="/users/:userId"
-            element={<UserPage></UserPage>}
+          <Route path="/users" element={<UsersList></UsersList>}></Route>
+          <Route path="/users/:userId" element={<UserPage></UserPage>}></Route>
+          <Route
+            path="/notifications"
+            element={<NotificationsList></NotificationsList>}
           ></Route>
           <Route path="*" element={<div>This is nowhere</div>} />
         </Routes>
