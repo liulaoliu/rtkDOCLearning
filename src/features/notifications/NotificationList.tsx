@@ -25,8 +25,9 @@ export const NotificationsList = () => {
     const user = users.find((user) => user.id === notification.user) || {
       name: "Unknown User",
     };
+    const shouldBeNew = notification.isNew ===undefined
     const notificationClassname = classnames("notification", {
-      new: notification.isNew,
+      new: shouldBeNew,
     });
     return (
       <div key={notification.id} className={notificationClassname}>

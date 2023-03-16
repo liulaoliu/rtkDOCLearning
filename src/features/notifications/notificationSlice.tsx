@@ -32,12 +32,12 @@ const notificationsSlice = createSlice({
   name: "notifications",
   initialState: initialState,
   reducers: {
+    /**
+     * 读取当前store中所有Notifications，并将其各设为 read = true
+     */
     allNotificationsRead(state) {
       state.forEach((notification) => {
-        console.log("before notification.read", notification.read);
-
         notification.read = true;
-        console.log("after notification.read", notification.read);
       });
     },
   },
