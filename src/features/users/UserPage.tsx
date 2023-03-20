@@ -18,13 +18,20 @@ export const UserPage = ({}) => {
   });
 
   const postTitles = postsForUser.map((post) => (
-    <li key={post.id}>
+    <li key={post.id + Math.random().toString()}>
       <Link to={`/posts/${post.id}`}>{post.title}</Link>
     </li>
   ));
 
   return (
     <section>
+      <h6
+        style={{
+          color: "skyblue",
+        }}
+      >
+        这是UserPage 组件捏！
+      </h6>
       <h2>{user?.name}</h2>
 
       <ul>{postTitles}</ul>

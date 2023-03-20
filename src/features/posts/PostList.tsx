@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 const PostExcerpt = ({ post }: { post: IPost }) => {
   return (
-    <article className="post-excerpt" key={post.id}>
+    <article className="post-excerpt" key={post.id + Math.random().toString()}>
       <h3>{post.title}</h3>
       <div>
         <PostAuthor userId={post.user} />
@@ -50,7 +50,7 @@ export const PostList = () => {
       .sort((a, b) => b.date.localeCompare(a.date));
 
     content = orderedPosts.map((post) => (
-      <PostExcerpt key={post.id+Math.random().toString()} post={post} />
+      <PostExcerpt key={post.id + Math.random().toString()} post={post} />
     ));
   } else if (postStatus === "failed") {
     content = <div>{error}</div>;

@@ -6,6 +6,7 @@ import {
   createSlice,
   nanoid,
   PayloadAction,
+  createSelector,
 } from "@reduxjs/toolkit";
 import { client } from "../../api/client";
 interface IState {
@@ -136,4 +137,5 @@ export const selectAllPosts = (state: RootState) => state.posts.posts;
 
 export const selectPostById = (state: RootState, postId: string | undefined) =>
   state.posts.posts.find((post) => post.id === postId);
+
 export default postsSlice.reducer;
