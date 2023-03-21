@@ -6,16 +6,24 @@ import { useParams } from "react-router";
 import { selectUserById } from "../users/usersSlice";
 import { selectAllPosts } from "../posts/postsSlice";
 import { useAppSelector } from "../../app/hooks";
+import { createSelector } from "@reduxjs/toolkit";
 
 export const UserPage = ({}) => {
   const { userId } = useParams();
 
   const user = useAppSelector((state) => selectUserById(state, userId));
-
-  const postsForUser = useAppSelector((state) => {
-    const allPosts = selectAllPosts(state);
-    return allPosts.filter((post) => post.user === userId);
-  });
+  //这里使用的是旧的selector
+  // const postsForUser = useAppSelector((state) => {
+  //   const allPosts = selectAllPosts(state);
+  //   return allPosts.filter((post) => post.user === userId);
+  // });
+  const selectPostsByUser = createSelector(
+    [selectAllPosts, (state, userId) => userId],
+    (posts, userId) => posts.filter((post) => post.user === userId)
+  );
+  const postsForUser = useAppSelector((state) =>
+    selectPostsByUser(state, userId)
+  );
 
   const postTitles = postsForUser.map((post) => (
     <li key={post.id + Math.random().toString()}>

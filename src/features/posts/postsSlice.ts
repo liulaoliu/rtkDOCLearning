@@ -133,7 +133,9 @@ const postsSlice = createSlice({
 
 export const { postAdd, postUpdated, reactionAdded } = postsSlice.actions;
 
-export const selectAllPosts = (state: RootState) => state.posts.posts;
+export const selectAllPosts = (state: RootState) => {
+  return state.posts.posts;
+};
 
 export const selectPostById = (state: RootState, postId: string | undefined) =>
   state.posts.posts.find((post) => post.id === postId);

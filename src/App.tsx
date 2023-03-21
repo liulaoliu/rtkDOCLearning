@@ -24,7 +24,7 @@ function App() {
   dispatch(fetchUsers());
   return (
     <Router>
-      <Counter></Counter>
+      {/* <Counter></Counter> */}
       <div className="App">
         <Navbar></Navbar>
         <Routes>
