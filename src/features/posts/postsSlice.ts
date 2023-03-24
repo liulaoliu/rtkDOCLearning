@@ -120,6 +120,7 @@ const postsSlice = createSlice({
         state.status = "success";
         // Add any fetched posts to the array
         state.posts = state.posts.concat(action.payload);
+        state.posts.sort((a, b) => b.date.localeCompare(a.date));
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = "failed";
@@ -140,4 +141,6 @@ export const selectAllPosts = (state: RootState) => {
 export const selectPostById = (state: RootState, postId: string | undefined) =>
   state.posts.posts.find((post) => post.id === postId);
 
+export const selectPostIdList = (state: RootState) =>
+  state.posts.posts.map((item) => item.id);
 export default postsSlice.reducer;

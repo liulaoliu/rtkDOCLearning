@@ -3,15 +3,25 @@
 import { PostAuthor } from "./PostAuthor";
 import { TimeAgo } from "./TimeAgo";
 import { ReactionButtons } from "./ReactionButtons";
-import { selectAllPosts, fetchPosts, IPost } from "./postsSlice";
+import {
+  selectAllPosts,
+  fetchPosts,
+  IPost,
+  selectPostIdList,
+  selectPostById,
+} from "./postsSlice";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import React, { useEffect } from "react";
 import { createSelector } from "@reduxjs/toolkit";
 
-let PostExcerpt = React.memo(({ post }: { post: IPost }) => {
+let PostExcerpt = ({ id }: { id: string }) => {
+  const post = useAppSelector((state) => selectPostById(state, id));
+  if (post === undefined) {
+    return <div>不存在</div>;
+  }
   return (
-    <article className="post-excerpt" key={post.id + Math.random().toString()}>
+    <article className="post-excerpt" key={id}>
       <h6
         style={{
           color: "skyblue",
@@ -32,12 +42,20 @@ let PostExcerpt = React.memo(({ post }: { post: IPost }) => {
       </Link>
     </article>
   );
-});
+};
 
 export const PostList = () => {
   const cached = React.useRef(false);
   const dispatch = useAppDispatch();
-  const posts = useAppSelector(selectAllPosts);
+  // const posts = useAppSelector(selectAllPosts);
+
+  
+  const selectIds = createSelector([selectPostIdList], (idList) => {
+    return idList;
+  });
+  const postIdList = useAppSelector(selectIds, (pre, next) => {
+    return pre.toString() === next.toString();
+  });
 
   const postStatus = useAppSelector((state) => state.posts.status);
   const error = useAppSelector((state) => state.posts.error);
@@ -55,13 +73,11 @@ export const PostList = () => {
     content = <div>正在加载捏！</div>;
   } else if (postStatus === "success") {
     // Sort posts in reverse chronological order by datetime string
-    const orderedPosts = posts
-      .slice()
-      .sort((a, b) => b.date.localeCompare(a.date));
+    // const orderedPosts = posts
+    //   .slice()
+    //   .sort((a, b) => b.date.localeCompare(a.date));
 
-    content = orderedPosts.map((post) => (
-      <PostExcerpt key={post.id} post={post} />
-    ));
+    content = postIdList.map((id) => <PostExcerpt key={id} id={id} />);
   } else if (postStatus === "failed") {
     content = <div>{error}</div>;
   }
@@ -82,4 +98,3 @@ export const PostList = () => {
 };
 
 export default PostList;
-
